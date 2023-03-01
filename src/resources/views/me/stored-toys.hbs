@@ -1,0 +1,29 @@
+<div class="mt-4">
+    <h3>My Toys</h3>
+
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each toys}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.price}} VND</td>
+                <td><img src="{{this.image}}" class="img-thumbnail toy-img" alt="..."></td>
+                <td>
+                    <a href="" class="btn btn-outline-warning">Edit</a>
+                    <a href="" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
