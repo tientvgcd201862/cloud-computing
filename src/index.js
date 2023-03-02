@@ -8,6 +8,7 @@ const { engine } = require('express-handlebars');
 const route = require('./routes');
 const db = require('./config/db');
 const handlebars = require('handlebars');
+const methodOverride = require('method-override');
 
 // Connect to DB
 db.connect();
@@ -19,8 +20,8 @@ app.use(
         extended: true,
     }),
 );
-app.use(json());
-
+app.use(express.json());
+app.use(methodOverride('_method'))
 // Template engine
 app.engine(
     '.hbs',

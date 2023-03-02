@@ -1,10 +1,10 @@
 <div class="my-4"></div>
-<h3>Add toy</h3>
+<h3>Update toy</h3>
 <div class="mt-4">
-    <form method="POST" action="/toys/store">
+    <form method="POST" action="/toys/{{toy._id}}?_method=PUT">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" enctype="multipart/form-data">
+            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" value="{{toy.name}}">
         </div>
 <!--        <div class="mb-3">-->
 <!--            <label for="description" class="form-label">Description</label>-->
@@ -12,16 +12,16 @@
 <!--        </div>-->
         <div class="mb-3">
             <label for="description">Description</label>
-            <textarea class="form-control" rows="5" id="description" name="description"></textarea>
+            <textarea class="form-control" rows="5" id="description" name="description" >{{toy.description}}"</textarea>
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="text" class="form-control" id="price" name="price" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="price" name="price" aria-describedby="emailHelp" value="{{toy.price}}">
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
-            <input class="form-control" type="text" id="image" name="image">
+            <input class="form-control" type="text" id="image" name="image" value="{{toy.image}}">
         </div>
-        <button type="submit" class="btn btn-primary">Add Toy</button>
+        <button type="submit" class="btn btn-primary">Edit Toy</button>
     </form>
 </div>

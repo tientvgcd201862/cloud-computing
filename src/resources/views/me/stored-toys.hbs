@@ -19,8 +19,8 @@
                 <td>{{this.price}} VND</td>
                 <td><img src="{{this.image}}" class="img-thumbnail toy-img" alt="..."></td>
                 <td>
-                    <a href="" class="btn btn-outline-warning">Edit</a>
-                    <a href="" class="btn btn-outline-danger">Delete</a>
+                    <a href="/toys/{{this._id}}/edit" class="btn btn-outline-warning">Edit</a>
+                    <a href="/toys/{{this._id}}/" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>
         {{/each}}

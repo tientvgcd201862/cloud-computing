@@ -38,6 +38,21 @@ class ToyController {
                 next(err);
             });
     }
+
+    // [GET] /toys/:id/edit
+    edit(req, res, next) {
+        Toy.findById(req.params.id)
+            .then(toy => {res.render('toys/edit', {
+                toy: mongooseToObject(toy)
+            })})
+            .catch(next)
+    }
+    // [PUT] /toys/:id
+    update(req, res, next) {
+        Toy.updateOne({ _id: req.params.id}, req.body)
+            .then(() => res.redirect('/me/stored/toys'))
+            .catch(next)
+    }
 }
 
 module.exports = new ToyController();
