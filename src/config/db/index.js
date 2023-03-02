@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 async function connect() {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/atn_store', {
+        await mongoose.connect('mongodb+srv://atnstore:atnstore@atnstore.qlgzhdp.mongodb.net/atn_store?retryWrites=true&w=majority', {
             useNewUrlParser : true,
             useUnifiedTopology: true,
         });
@@ -11,4 +11,4 @@ async function connect() {
     }
 }
 
-module.exports = { connect};
+module.exports = { connect };
