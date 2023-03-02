@@ -20,10 +20,59 @@
                 <td><img src="{{this.image}}" class="img-thumbnail toy-img" alt="..."></td>
                 <td>
                     <a href="/toys/{{this._id}}/edit" class="btn btn-outline-warning">Edit</a>
-                    <a href="/toys/{{this._id}}/" class="btn btn-outline-danger">Delete</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-toy-modal"
+                            data-name="{{this.name}}" data-id="{{this._id}}">
+                        Delete
+                    </button>
                 </td>
             </tr>
         {{/each}}
         </tbody>
     </table>
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="delete-toy-modal" tabindex="-1" aria-labelledby="delete-toy-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete toy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete this toy: <span id="toyName"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="btn-delete-toy">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete hidden form -->
+<form name="delete-toy-form" method="POST"></form>
+<!-- Script -->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var toyId;
+        var deleteForm = document.forms['delete-toy-form']
+        var modal = document.getElementById('delete-toy-modal')
+        modal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget
+            var name = button.getAttribute('data-name')
+            var modalBody = modal.querySelector('.modal-body #toyName')
+            modalBody.innerText = name
+            toyId = button.getAttribute('data-id')
+        })
+
+        var btnDeleteToy = document.getElementById('btn-delete-toy');
+        btnDeleteToy.onclick = function () {
+            deleteForm.action = '/toys/' + toyId + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+</script>

@@ -53,6 +53,22 @@ class ToyController {
             .then(() => res.redirect('/me/stored/toys'))
             .catch(next)
     }
+    // [DELETE] /toys/:id
+    delete(req, res, next) {
+        Toy.deleteOne({ _id: req.params.id})
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+    // [GET] /toys/search
+    search(req, res, next) {
+        const q = req.query.q;
+        Toy.find({ name: new RegExp(q, 'i') })
+            .then(toys => {
+                res.render('home', { toys: multipleMongooseToObject(toys) });
+            })
+            .catch(next);
+    }
 }
 
 module.exports = new ToyController();
