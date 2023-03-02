@@ -47,6 +47,11 @@ Handlebars.registerHelper('truncateWords', function(str, numWords) {
     const truncatedWords = words.slice(0, numWords);
     return truncatedWords.join(' ') + '...';
 });
+// Handlebars helper function to format price with commas
+Handlebars.registerHelper('formatPrice', function(price) {
+    return Number(price).toLocaleString('vn-VN', {style: 'currency', currency: 'VND'});
+});
+
 Handlebars.registerHelper('isRow', function (index) {
     return (index) % 3 === 0;
 })

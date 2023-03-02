@@ -1,7 +1,7 @@
 @import 'variables';
 
-.card-course-item{
-  margin-top: 10px;
+.card-toy-item{
+  margin: 10px 15px;
 }
 
 .user-avatar {
@@ -14,4 +14,11 @@
 .toy-img{
   width: 200px;
   height: 200px;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: blanchedalmond;
 }
