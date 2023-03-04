@@ -1,5 +1,5 @@
 const path = require('path');
-const port = 1234;
+const port = 3000;
 const { engine } = require('express-handlebars');
 const route = require('./routes');
 const db = require('./config/db');
