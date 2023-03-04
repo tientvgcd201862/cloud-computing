@@ -1,19 +1,15 @@
 const path = require('path');
-const express = require('express');
-const app = express();
-const { json } = require('express');
-const port = 3000;
-const morgan = require('morgan');
+const port = 1234;
 const { engine } = require('express-handlebars');
 const route = require('./routes');
 const db = require('./config/db');
-const handlebars = require('handlebars');
 const methodOverride = require('method-override');
+const express = require('express');
+const app = express();
 
 // Connect to DB
 db.connect();
 
-app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
     express.urlencoded({
@@ -39,12 +35,10 @@ Handlebars.registerHelper('truncateWords', function(str, numWords) {
     if (!str) {
         return '';
     }
-
     const words = str.split(' ');
     if (words.length <= numWords) {
         return str;
     }
-
     const truncatedWords = words.slice(0, numWords);
     return truncatedWords.join(' ') + '...';
 });
@@ -56,8 +50,6 @@ Handlebars.registerHelper('formatPrice', function(price) {
 Handlebars.registerHelper('isRow', function (index) {
     return (index) % 3 === 0;
 })
-
-
 
 // Routes init
 route(app);

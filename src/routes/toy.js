@@ -4,7 +4,6 @@ const router = express.Router();
 const toyController = require('../app/controllers/ToyController');
 
 router.get('/create', toyController.create);
-router.get('/search', toyController.search);
 router.post('/store', toyController.store);
 router.get('/:id/edit', toyController.edit);
 router.put('/:id', toyController.update);

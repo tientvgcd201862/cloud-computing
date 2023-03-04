@@ -1,6 +1,5 @@
 const Toy = require('../models/Toy');
 const { multipleMongooseToObject, mongooseToObject} = require('../../until/mongoose');
-const {upload} = require("../../until/upload");
 class MeController {
     // [GET] /me/stored/courses
     storedToys(req, res, next) {
